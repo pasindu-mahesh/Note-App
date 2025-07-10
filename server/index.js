@@ -30,6 +30,23 @@ app.get("/api/note", async (req, res) => {
 });
 
 
+//get note by ID 
+app.get("/api/note/:id", async (req, res) => {
+
+    try{
+        const noteId = req.params.id;   
+        const data = await note.findById(noteId)
+
+        if(!data){
+            throw new Error('An error occurred while fetching notes.')
+        }
+        res.status(201).json(data);
+    }catch ( error) {
+        res.status(500).json({ error: 'An error occurred while fetching notes...'})
+    }
+});
+
+
 app.get("/", (req, res) => {
     res.json("Hello from the server! This is the backend of the note app!");
 });
