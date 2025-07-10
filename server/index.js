@@ -46,6 +46,22 @@ app.get("/api/note/:id", async (req, res) => {
     }
 });
 
+//create a note
+app.post("/api/note", async (req, res) => {
+
+    try{
+        const { title, description } = req.body;
+        const data = await note.create( {title, description} );
+
+        if(!data){
+            throw new Error('An error occurred while creating a note.')
+        }
+        res.status(201).json(data);
+    }catch ( error) {
+        res.status(500).json({ error: 'An error occurred while creating a note...'})
+    }
+});
+
 
 app.get("/", (req, res) => {
     res.json("Hello from the server! This is the backend of the note app!");
