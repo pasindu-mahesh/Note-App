@@ -81,6 +81,23 @@ app.put("/api/note/:id", async (req, res) => {
     }
 });
 
+//Delete a note
+app.delete("/api/note/:id", async (req, res) => {
+
+    try{
+
+        const noteId = req.params.id;
+        const data = await note.findByIdAndDelete(noteId);
+
+        if(!data){
+            throw new Error('An error occurred while updating a note.')
+        }
+        res.status(201).json(data);
+    }catch ( error) {
+        res.status(500).json({ error: 'An error occurred while updating a note...'})
+    }
+});
+
 app.get("/", (req, res) => {
     res.json("Hello from the server! This is the backend of the note app!");
 });
