@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function Notes() {
     const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/note`;
     const [data, setData] = useState([]);
-    const [loading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -31,16 +31,23 @@ function Notes() {
         fetchData();
     }, []);
 
-
-
     return (
         <div>
 
-            <pre>
-                {JSON.stringify(data, null, 2)}
-            </pre>
+            {/*<pre>JSON.stringify(data, null, 2)</pre>*/}
 
-
+            {isLoading ? (<p>Loading...</p>) : error ? (<p>{error}</p>) : (
+                <ul className='notes'>
+                    {data.map(item => (
+                        <li key={item._id}>
+                            <Link to={'/notes/' + item._id}>
+                                <h3>{item.title}</h3>
+                                <p>{item.description}</p>
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            )}
         </div>
     );
 }
