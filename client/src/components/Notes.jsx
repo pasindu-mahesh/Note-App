@@ -38,6 +38,11 @@ function Notes() {
 
             {isLoading ? (<p>Loading...</p>) : error ? (<p>{error}</p>) : (
                 <ul className='notes'>
+
+                    <li className='add-note-button'>
+                        <Link to={`/addnote`}>+</Link>
+                    </li>
+
                     {data.map(item => (
                         <li key={item._id}>
                             <Link to={'/notes/' + item._id}>
