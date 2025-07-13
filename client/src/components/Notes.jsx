@@ -42,7 +42,11 @@ function Notes() {
                         <li key={item._id}>
                             <Link to={'/notes/' + item._id}>
                                 <h3>{item.title}</h3>
-                                <p>{item.description}</p>
+                                <p>
+                                    {item.description.length > 50
+                                        ? `${item.description.substring(0, 50)}...`
+                                        : item.description}
+                                </p>
                             </Link>
                         </li>
                     ))}
