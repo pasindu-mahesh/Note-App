@@ -13,17 +13,17 @@ function AddNote() {
     e.preventDefault();
 
     try {
-      const response = await fetch(baseUrl,{
+      const response = await fetch(baseUrl, {
         method: "POST",
-        headers: { "Content-Type" : "application/json" },
-        body: JSON.stringify({ 
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
           title, description
         }),
       })
 
       if (!response.ok) {
-         console.error("Failed to save note");
-      }else{
+        console.error("Failed to save note");
+      } else {
         console.log("Note created successfully");
         setSubmitted(true); //Show success on success
         setTimeout(() => setSubmitted(false), 2000);
@@ -63,8 +63,8 @@ function AddNote() {
               rows="4"
               cols="50"
               className='description'
-              >
-              </textarea>
+            >
+            </textarea>
           </div>
 
         </div>
