@@ -6,6 +6,7 @@ function AddNote() {
   const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/note`;
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [submited, setSubmitted] = useState(false);
 
   const addNote = async (e) => {
 
@@ -19,6 +20,16 @@ function AddNote() {
           title, description
         }),
       })
+
+      if (!response.ok) {
+         console.error("Failed to save note");
+      }else{
+        console.log("Note created successfully");
+        setSubmitted(true); //Show success on success
+        setTimeout(() => setSubmitted(false), 2000);
+        setTitle(""); //Optionally reset form
+        setDescription("");
+      }
 
     } catch (error) {
       console.error(error);
@@ -58,7 +69,14 @@ function AddNote() {
 
         </div>
 
-        <input type="submit"/>
+        <input type="submit"
+          value={submited ? "Saving Note..." : "Save Note"}
+          disabled={submited}
+        />
+
+        <p className='text-center'>
+          {submited && <div className='success-message'> Note has been a</div>}
+        </p>
 
       </form>
 
