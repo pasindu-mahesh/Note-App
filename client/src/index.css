@@ -28,7 +28,7 @@ main {
 
 /* === HEADER & FOOTER === */
 header, footer {
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(94, 93, 93, 0.6);
   color: #00fff7;
   padding: 1rem 2rem;
   text-align: center;
