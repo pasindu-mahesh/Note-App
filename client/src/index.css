@@ -196,6 +196,28 @@ textarea.description::placeholder,
   transform: scale(1.05);
 }
 
+.justnote{
+  color: #2d5e1f;
+  font-weight: bold;
+  font-size: 20px; 
+}
+.keep-it{
+  font-weight: bold;
+  color:#2d5e1f;
+  font-size: 18px;
+  display: block;
+  text-align: center;
+}
+
+.reserved {
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+  margin-top: 1rem;
+  display: block;
+  text-align: center;
+}
+
 /* === RESPONSIVE === */
 @media (max-width: 600px) {
   main {
