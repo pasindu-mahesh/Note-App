@@ -11,7 +11,7 @@ function NoteList({ notes }) {
       {notes.map((note) => (
         <div key={note._id} className="note-card">
           <h2>
-            <Link to={`/note/${note._id}`}>{note.title}</Link>
+            <Link to={`/note/${note._id}`} className="note-title" >{note.title}</Link>
           </h2>
           <p className="note-description">
             {typeof note.description === 'string' && note.description.length > 50
