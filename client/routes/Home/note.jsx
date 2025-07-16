@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 
 function UpdateNote() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/note/${id}`;
 
   const [title, setTitle] = useState('');
@@ -11,6 +12,7 @@ function UpdateNote() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Fetch existing note
   useEffect(() => {
     const fetchNote = async () => {
       try {
@@ -30,6 +32,7 @@ function UpdateNote() {
     fetchNote();
   }, [id]);
 
+  // Update note
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
@@ -47,6 +50,27 @@ function UpdateNote() {
       }
     } catch (error) {
       console.error("Update error:", error);
+    }
+  };
+
+  // ✅ Delete note
+  const handleDelete = async () => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this note?");
+    if (!confirmDelete) return;
+
+    try {
+      const response = await fetch(baseUrl, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        console.error("Failed to delete note");
+      } else {
+        alert("Note deleted successfully.");
+        navigate("/"); // Go back to home page
+      }
+    } catch (error) {
+      console.error("Delete error:", error);
     }
   };
 
@@ -86,6 +110,16 @@ function UpdateNote() {
           <p className="text-center success-message">Note updated successfully!</p>
         )}
       </form>
+
+      {/* Delete Button */}
+      <div className="text-center">
+        <button
+          onClick={handleDelete}
+          className="delete-button"
+        >
+          🗑 Delete Note
+        </button>
+      </div>
     </div>
   );
 }
