@@ -7,12 +7,15 @@
 
 html, body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #1c1e22, #2c2f34);
-  color: #f2f2f2;
+  background: linear-gradient(135deg, #e1fad5, #ECFAE5);
+  color: #333;
   min-height: 100vh;
   line-height: 1.6;
   scroll-behavior: smooth;
+  
 }
+
+
 
 /* === GLASSMORPHIC WRAPPER === */
 main {
@@ -20,24 +23,21 @@ main {
   max-width: 900px;
   margin: 2rem auto;
   backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.3);
   border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  
 }
 
 /* === HEADER & FOOTER === */
 header, footer {
-  background: rgba(30, 30, 30, 0.6);
-  color: #00c896;
+  background: rgba(208, 245, 200, 0.75); /* translucent green */
+  color: #333;
   padding: 1rem 2rem;
   text-align: center;
-  border-bottom: 1px solid #00c896;
-}
-
-footer {
-  margin-top: auto;
-  border-top: 1px solid #00c896;
+  border-bottom: 2px solid #B0DB9C;
+  border-top: 2px solid #CAE8BD;
 }
 
 /* === LOGO & NAV === */
@@ -48,20 +48,20 @@ footer {
   align-items: center;
   gap: 0.5rem;
   text-decoration: none;
-  color: #00c896;
+  color: #2d5e1f !important;
 }
 
 .logo img {
-  height: 30px;
+  height: 40px;
 }
 
 nav a {
   margin: 0 1rem;
-  color: #e0e0e0;
+  color: #555;
   text-decoration: none;
   font-weight: 500;
   position: relative;
-  transition: color 0.3s;
+  transition: color 0.3s ease;
 }
 
 nav a::after {
@@ -71,7 +71,7 @@ nav a::after {
   height: 2px;
   left: 0;
   bottom: -4px;
-  background: #00c896;
+  background: #B0DB9C;
   transition: 0.4s;
 }
 
@@ -81,29 +81,31 @@ nav a:hover::after {
 
 nav a:hover,
 nav a.active {
-  color: #00c896;
+  color: #2d5e1f;
 }
 
 /* === BUTTONS === */
-.add-button, .back-button, input[type="submit"] {
+.add-button,
+.back-button,
+input[type="submit"] {
   display: inline-block;
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1.2rem;
   margin: 1rem 0;
-  background: #00c896;
-  color: #101010;
+  background: #B0DB9C;
+  color: #222;
   border: none;
   border-radius: 30px;
   font-weight: bold;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 0 8px #00c89680, 0 0 20px #00c89630;
+  box-shadow: 0 0 10px #B0DB9C90;
 }
 
 .add-button:hover,
 .back-button:hover,
 input[type="submit"]:hover {
   transform: scale(1.05);
-  background: #00a57a;
+  background: #94C973;
 }
 
 /* === NOTES GRID === */
@@ -115,12 +117,11 @@ input[type="submit"]:hover {
 }
 
 .note-card {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #DDF6D2;
   border-radius: 12px;
   padding: 1rem;
-  color: #f2f2f2;
-  box-shadow: 0 0 10px rgba(0,255,200,0.1);
+  color: #333;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
 
@@ -137,30 +138,30 @@ textarea.description,
   margin: 0.5rem 0;
   border: none;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.08);
-  color: #f2f2f2;
+  background: rgba(255, 255, 255, 0.8);
+  color: #222;
   font-size: 1rem;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 0 6px rgba(0, 255, 200, 0.15);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 8px rgba(176, 219, 156, 0.3);
   outline: none;
 }
 
 input.title::placeholder,
 textarea.description::placeholder,
 .search-bar::placeholder {
-  color: #999;
+  color: #888;
 }
 
-/* === TEXTS === */
+/* === TEXT STYLES === */
 .success-message {
-  color: #28d17c;
+  color: #379237;
   font-weight: bold;
   margin-top: 1rem;
   text-align: center;
 }
 
 .error {
-  color: #ff4c4c;
+  color: #e63946;
   text-align: center;
   font-weight: bold;
 }
